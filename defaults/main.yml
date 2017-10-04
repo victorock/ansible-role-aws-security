@@ -11,7 +11,7 @@ ec2network_vpc_subnet_id: "{{ ec2_regions[ec2_region].subnet_id }}"
 ec2security_state: present
 
 # Network Security configuration
-ec2security_group_name: default
+ec2security_group_name: default_security_group
 ec2security_proto: tcp
 ec2security_ports: 22
 ec2security_source: 0.0.0.0/0

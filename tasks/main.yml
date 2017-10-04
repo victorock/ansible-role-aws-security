@@ -19,7 +19,7 @@
   local_action:
     module: ec2_group
     name: "{{ ec2security_group_name }}"
-    description: "{{ ec2security_ports }} ports open"
+    description: "{{ ec2security_group_name }} ports"
     region: "{{ ec2_region }}"
     vpc_id: "{{ ec2_vpc_id }}"
     rules:
