@@ -1,0 +1,36 @@
+---
+- name: Ensure key {{ ec2security_key_name }} is {{ ec2security_state }}
+  local_action:
+    module: ec2_key
+    name: "{{ ec2security_key_name }}"
+    region: "{{ ec2_region }}"
+    key_material: "{{ item }}"
+    state: "{{ ec2security_state }}"
+  with_file: "{{ ec2security_key_dir }}/{{ ec2security_key_name }}.pub"
+  register: return_ec2security_key
+  tags:
+    - ec2security
+    - ec2security_key
+
+- debug: var=return_ec2security_key
+  when: ec2_debug
+
+- name: Ensure security group {{ ec2security_group_name }} is {{ ec2security_state }}
+  local_action:
+    module: ec2_group
+    name: "{{ ec2security_group_name }}"
+    description: "{{ ec2security_ports }} ports open"
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ ec2_vpc_id }}"
+    rules:
+      - proto: "{{ ec2security_proto }}"
+        ports: "{{ ec2security_ports }}"
+        cidr_ip: "{{ ec2security_source }}"
+    state: "{{ ec2security_state }}"
+  register: return_ec2security_group
+  tags:
+    - ec2security
+    - ec2security_group
+
+- debug: var=return_ec2security_group
+  when: ec2_debug

@@ -1,0 +1,42 @@
+---
+# 1st Present
+- hosts: localhost
+  become: no
+  gather_facts: no
+
+  vars:
+    test: yes
+    ec2security_key_name: test
+    ec2security_group_name: test
+    ec2security_state: present
+
+  roles:
+    - ansible-role-aws-security
+
+# 2nd idempotent
+- hosts: localhost
+  become: no
+  gather_facts: no
+
+  vars:
+    test: yes
+    ec2security_key_name: test
+    ec2security_group_name: test
+    ec2security_state: present
+
+  roles:
+    - ansible-role-aws-security
+
+# 3rd Cleanup
+- hosts: localhost
+  become: no
+  gather_facts: no
+
+  vars:
+    test: yes
+    ec2security_key_name: test
+    ec2security_group_name: test
+    ec2security_state: absent
+
+  roles:
+    - ansible-role-aws-security
