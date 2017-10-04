@@ -24,8 +24,7 @@
     vpc_id: "{{ ec2_vpc_id }}"
     rules:
       - proto: "{{ ec2security_proto }}"
-        ports:
-          - "{{ ec2security_ports }}"
+        ports: "{{ ec2security_ports }}"
         cidr_ip: "{{ ec2security_source }}"
     state: "{{ ec2security_state }}"
   register: return_ec2security_group
