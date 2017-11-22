@@ -4,8 +4,8 @@
     path: "files/{{ ec2_security_key_name }}.pub"
   register: ec2_security_keyfile
 
-  - debug: var=ec2_keyfile
-    when: "{{ ec2_security_key_debug | default('false') }}"
+- debug: var=ec2_keyfile
+  when: "{{ ec2_security_key_debug | default('false') }}"
 
 - name: "Ensure key {{ ec2_security_key_name }} is {{ ec2_security_key_state }}"
   local_action:
