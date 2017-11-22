@@ -3,7 +3,7 @@
   local_action:
     module: ec2_group
     name: "{{ ec2_security_group_name }}"
-    description: "Ports [ {{ ec2_security_group_ports | join(', ') }} ]"
+    description: "{{ ec2_security_group_name }} VPC security group"
     region: "{{ ec2_security_group_region }}"
     vpc_id: "{{ ec2_security_group_vpc_id }}"
     rules:
