@@ -1,6 +1,5 @@
 # Ansible
 *.retry
-tests/keychain
 
 # Vagrant
 .vagrant

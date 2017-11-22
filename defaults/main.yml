@@ -2,20 +2,25 @@
 ## General parameters
 ec2_debug: false
 ec2_region: eu-central-1
+
+# VPC Configuration
 ec2_vpc_id: "{{ ec2_regions[ec2_region].vpc }}"
+ec2_vpc_subnet_id: "{{ ec2_regions[ec2_region].subnet_id }}"
 
-# Network configuration
-ec2network_vpc_subnet_id: "{{ ec2_regions[ec2_region].subnet_id }}"
+# ec2_security_group.yml: AWS Security Group
+ec2_security_group_debug: "{{ ec2_debug }}"
+ec2_security_group_region: "{{ ec2_region }}"
+ec2_security_group_vpc_id: "{{ ec2_vpc_id }}"
+ec2_security_group_name: default
+ec2_security_group_state: present
+ec2_security_group_proto: tcp
+ec2_security_group_ports: 22
+ec2_security_group_source: 0.0.0.0/0
 
-# Security State
-ec2security_state: present
-
-# Network Security configuration
-ec2security_group_name: default_security_group
-ec2security_proto: tcp
-ec2security_ports: 22
-ec2security_source: 0.0.0.0/0
-
-# Key Security Configuration
-ec2security_key_name: default
-ec2security_key_dir: keychain
+# ec2_security_key.yml: AWS Security Key
+ec2_security_key_debug: "{{ ec2_debug }}"
+ec2_security_key_region: "{{ ec2_region }}"
+ec2_security_key_vpc_id: "{{ ec2_vpc_id }}"
+ec2_security_key_name: default
+ec2_security_key_state: present
+ec2_security_key_dir: keychain
