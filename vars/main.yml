@@ -1,156 +1,23 @@
+---
 # --- Lookup tables --- #
 # Region specific AMIs, subnets, and VPCs
 ec2_regions:
   eu-central-1:
     vpc: vpc-113d1379
     subnet_id: subnet-036c9f68
-    amis:
-      fedora26: ami-5364c43c
-      atomic26: ami-c6d266a9
-      centos7: ami-7cbc6e13
-      rhel7: ami-0e258161
-      ubuntu14: Unknown
-      ubuntu16: Unknown
 
   eu-west-1:
     vpc: vpc-b680f5d1
     subnet_id: subnet-dd51fe86
-    amis:
-      fedora26: ami-aac928d3
-      atomic26: ami-4254903b
-      centos7: ami-0d063c6b
-      rhel7: ami-f1978897
-      ubuntu14: Unknown
-      ubuntu16: Unknown
 
   eu-west-2:
     vpc: vpc-fb285892
     subnet_id: subnet-6b9cff10
-    amis:
-      fedora26: Unavailable
-      atomic26: Unavailable
-      centos7: ami-c22236a6
-      rhel7: ami-40a8bf24
-      ubuntu14: Unknown
-      ubuntu16: Unknown
 
   us-east-1:
     vpc: vpc-06c9a463
     subnet_id: subnet-a2169ed5
-    amis:
-      fedora26: ami-bb6065ad
-      atomic26: ami-dd9b8aa6
-      centos7: ami-61bbf104
-      rhel7: ami-85241def
-      ubuntu14: ami-feed08e8
-      ubuntu16: ami-9dcfdb8a
 
   us-west-1:
     vpc: vpc-ce1f9aab
     subnet_id: subnet-25b9157c
-    amis:
-      fedora26: ami-2c1c0f55
-      atomic26: ami-b11febc9
-      centos7: ami-af4333cf
-      rhel7: ami-f88fc498
-      ubuntu14: ami-6ebcec0e
-      ubuntu16: ami-b05203d0
-
-## Instances Types
-ec2_instances_store:
-  fedora26:
-    login:
-      key: fedora
-      username: fedora
-    ami_id: "{{ ec2_regions[ec2_region].amis.fedora26 }}"
-    type: t2.micro
-    boot_disk:
-      volume_size: 10
-      delete_on_termination: yes
-    ssh_port: 22
-    tags:
-      Name: fedora
-      Class: x86_64
-      Version: 26
-      Environment: staging
-
-  atomic26:
-    login:
-      key: fedora
-      username: fedora
-    ami_id: "{{ ec2_regions[ec2_region].amis.atomic26 }}"
-    type: t2.micro
-    boot_disk:
-      volume_size: 10
-      delete_on_termination: yes
-    ssh_port: 22
-    tags:
-      Name: atomic
-      Class: x86_64
-      Version: 26
-      Environment: staging
-
-  centos7:
-    login:
-      key: centos
-      username: centos
-    ami_id: "{{ ec2_regions[ec2_region].amis.centos7 }}"
-    type: t2.micro
-    boot_disk:
-      volume_size: 10
-      delete_on_termination: yes
-    ssh_port: 22
-    tags:
-      Name: centos
-      Class: x86_64
-      Version: 7
-      Environment: staging
-
-  # Look for owner 309956199498 to find official Red Hat AMIs
-  rhel7:
-    login:
-      key: rhel
-      username: ec2-user
-    ami_id: "{{ ec2_regions[ec2_region].amis.rhel7 }}"
-    type: t2.micro
-    boot_disk:
-      volume_size: 10
-      delete_on_termination: yes
-    ssh_port: 22
-    tags:
-      Name: rhel
-      Class: x86_64
-      Version: 7
-      Environment: staging
-
-  ubuntu14:
-    login:
-      key: ubuntu
-      username: ubuntu
-    ami_id: "{{ ec2_regions[ec2_region].amis.ubuntu14 }}"
-    type: t2.micro
-    boot_disk:
-      volume_size: 10
-      delete_on_termination: yes
-    ssh_port: 22
-    tags:
-      Name: ubuntu
-      Class: x86_64
-      Version: 14
-      Environment: staging
-
-  ubuntu16:
-    login:
-      key: ubuntu
-      username: ubuntu
-    ami_id: "{{ ec2_regions[ec2_region].amis.ubuntu16 }}"
-    type: t2.micro
-    boot_disk:
-      volume_size: 10
-      delete_on_termination: yes
-    ssh_port: 22
-    tags:
-      Name: ubuntu
-      Class: x86_64
-      Version: 16
-      Environment: staging
