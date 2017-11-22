@@ -2,7 +2,7 @@
 - name: "Ensure security group {{ ec2_security_group_name }} is {{ ec2_security_group_state }}"
   local_action:
     module: ec2_group
-    name: "{{ ec2_security_security_group_name }}"
+    name: "{{ ec2_security_group_name }}"
     description: "Ports [ {{ ec2_security_group_ports | join(', ') }} ]"
     region: "{{ ec2_security_group_region }}"
     vpc_id: "{{ ec2_security_group_vpc_id }}"
