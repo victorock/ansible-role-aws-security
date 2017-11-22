@@ -1,0 +1,17 @@
+---
+- name: "Ensure security group {{ ec2_security_group_name }} is {{ ec2_security_group_state }}"
+  local_action:
+    module: ec2_group
+    name: "{{ ec2_security_security_group_name }}"
+    description: "Ports [ {{ ec2_security_group_ports | join(', ') }} ]"
+    region: "{{ ec2_security_group_region }}"
+    vpc_id: "{{ ec2_security_group_vpc_id }}"
+    rules:
+      - proto: "{{ ec2_security_group_proto }}"
+        ports: "{{ ec2_security_group_ports }}"
+        cidr_ip: "{{ ec2_security_group_source }}"
+    state: "{{ ec2_security_group_state }}"
+  register: return_ec2_security_group
+
+- debug: var=return_ec2_security_group
+  when: "{{ ec2_security_group_debug | default('false') }}"
